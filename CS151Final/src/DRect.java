@@ -1,4 +1,8 @@
 
-public class DRect {
-
+public class DRect extends DShapes {
+		
+		public DRect()
+		{
+				
+		}
 }

@@ -1,4 +1,4 @@
 
-public class DLineModel {
+public class DLineModel extends DShapeModel{
 
 }

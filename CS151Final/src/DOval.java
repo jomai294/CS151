@@ -1,4 +1,7 @@
 
 public class DOval extends DShapes {
-		private int haha;
+		public DOval()
+		{
+				
+		}
 }
