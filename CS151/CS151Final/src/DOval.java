@@ -13,5 +13,6 @@ public class DOval extends DShapes {
 				g.fillOval(getDShapeModel().getX(),getDShapeModel().getY(),
 						getDShapeModel().getWidth(), getDShapeModel().getHeight());
 				g.setColor(getDShapeModel().getColor());
+				
 		}
 }

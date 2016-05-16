@@ -11,8 +11,10 @@ public class DRect extends DShapes {
 		}
 		
 		public void draw (Graphics g) {
+			g.setColor(getDShapeModel().getColor());
 			g.fillRect(getDShapeModel().getX(),getDShapeModel().getY(), 
 					getDShapeModel().getWidth(), getDShapeModel().getHeight());
-			g.setColor(getDShapeModel().getColor());
+			
+			
 		}
 }

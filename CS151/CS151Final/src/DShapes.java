@@ -9,18 +9,16 @@ public class DShapes {
 		
 		private DShapeModel model;
 		private ArrayList<Integer> listOfPoints;
-		private Canvas canvas;
-		private int x;
-		private int y; 
+		
 		
 		public DShapes() {
 				listOfPoints = new ArrayList<Integer>();
-				
+				model = new DShapeModel();
 		}
 		
 		public void draw(Graphics g)
 		{
-				System.out.println("In Dshapes draw");
+				
 				
 		}
 		
@@ -35,14 +33,20 @@ public class DShapes {
 				return model;
 		}
 		
+		public void setBounds(int x, int y) {
+				model.setX(x);
+				model.setY(y);
+				
+		}
+		
 		public boolean getBounds(int x, int y) {
 				listOfPoints.add(model.getX());
 				listOfPoints.add(model.getY());
 				listOfPoints.add(model.getWidth() + model.getX());
 				listOfPoints.add(model.getHeight() + model.getY());
 				
-				if (listOfPoints.get(0) < x && listOfPoints.get(1) < y && listOfPoints.get(2) > x - 2 && listOfPoints.get(3) + 2  > y ) {
-						System.out.println("The shape is on " + listOfPoints.get(3));
+				if (listOfPoints.get(0) <= x && listOfPoints.get(1) <= y && listOfPoints.get(2) >= x - 2 && listOfPoints.get(3) + 2  >= y ) {
+						//System.out.println("The shape is on " + listOfPoints.get(3));
 						return true;
 				}
 				

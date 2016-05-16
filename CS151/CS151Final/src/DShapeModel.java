@@ -15,7 +15,7 @@ public class DShapeModel {
 				width = 20;
 				height = 20;
 				
-				color = Color.GRAY;
+				color = Color.RED;
 				
 		}
 		

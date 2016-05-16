@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -11,7 +12,8 @@ public class Canvas extends JPanel {
 	ArrayList<DShapes> Shapes;
 	private int preX;
 	private int preY;
-	private DShapes shape;
+	//gets the shape currently selected
+	private DShapes shapeSelected;
 	
 	
 	
@@ -22,16 +24,26 @@ public class Canvas extends JPanel {
 		super.setVisible(true);
 		super.setBackground(Color.WHITE);
 		super.addMouseListener(new Mouse());
+		super.addMouseMotionListener(new Mouse());
+		
+		
+		
 	}
 	
+	public void setShapeSelected(DShapes d) {
+			shapeSelected = d;
+	}
 	
-
+	public DShapes getShapeSelected() {
+			return shapeSelected;
+	}
 
 	public void addRect() {
 		// TODO Auto-generated method stub
 		DShapes ds = new DRect();
 		Shapes.add(ds);
 		ds.draw(getGraphics());
+		setShapeSelected(ds);
 		
 	}
 	
@@ -40,22 +52,32 @@ public class Canvas extends JPanel {
 		DShapes ds = new DOval();
 		Shapes.add(ds);
 		ds.draw(getGraphics());
+		setShapeSelected(ds);
 	}
 	
 	public void addLine() {
 		DShapes ds = new DLine();
 		Shapes.add(ds);
 		ds.draw(getGraphics());
+		//setShapeSelected(ds);
 	}
 	
 	public void addTextField() {
 		DShapes ds = new DText();
 		Shapes.add(ds);
 		ds.draw(getGraphics());
+		//setShapeSelected(ds);
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		for (DShapes d : Shapes) {
+				d.draw(g);
+		}
 	}
 
 
-	class Mouse implements MouseListener {
+	class Mouse implements MouseListener, MouseMotionListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -66,13 +88,31 @@ public class Canvas extends JPanel {
 								System.out.println("Mouse y is " + e.getY());
 								
 								System.out.println("within shape");
+								
+								
 						}
+						d.setBounds(e.getX(), e.getY());
+						System.out.println(d.getDShapeModel().getX());
 				}
+				
+				
+				
 		}
-
+		//for selecting shape
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
+			Point p = e.getPoint();
+			preX = p.x;
+			preY = p.y;
+			
+			//System.out.println(Shapes.size());
+			
+			for (DShapes d : Shapes) {
+					
+					System.out.println("the shape is at" + d.getDShapeModel().getX());
+					
+			}
 			
 			
 		}
@@ -92,6 +132,31 @@ public class Canvas extends JPanel {
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseDragged(MouseEvent e) {
+			// TODO Auto-generated method stub
+			if (shapeSelected.getBounds(preX, preY)) {
+				shapeSelected.getDShapeModel().setX(e.getX());
+				shapeSelected.getDShapeModel().setY(e.getY());
+				shapeSelected.setBounds(e.getX(), e.getY());
+			}
+			
+			
+			
+			
+			repaint();
+			
+			
+		}
+
+		@Override
+		public void mouseMoved(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+			
 			
 		}
 			
