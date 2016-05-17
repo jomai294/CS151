@@ -10,13 +10,21 @@ public class DShapeModel {
 		
 		public DShapeModel()
 		{
-				x = 0;
-				y = 0;
-				width = 0;
-				height = 0;
+				x = 10;
+				y = 10;
+				width = 20;
+				height = 20;
 				
-				color = Color.GRAY;
+				color = Color.RED;
 				
+		}
+		
+		public DShapeModel(int x, int y, int width, int height, Color color) {
+				this.x = x;
+				this.y = y; 
+				this.width = width;
+				this.height = height;
+				this.color = color;
 		}
 		public void setX(int x)
 		{
@@ -38,6 +46,9 @@ public class DShapeModel {
 				height = h;
 		}
 		
+		public void setColor(Color color) {
+				this.color = color;
+		}
 		public int getX()
 		{
 				return x;
@@ -62,8 +73,5 @@ public class DShapeModel {
 		{
 				return color;
 		}
-		
-		
-		
 		
 }
