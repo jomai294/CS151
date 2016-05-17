@@ -1,3 +1,4 @@
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -40,13 +41,15 @@ public class DShapes {
 		}
 		
 		public boolean getBounds(int x, int y) {
-				listOfPoints.add(model.getX());
-				listOfPoints.add(model.getY());
-				listOfPoints.add(model.getWidth() + model.getX());
-				listOfPoints.add(model.getHeight() + model.getY());
+				listOfPoints.add(0,model.getX());
+				System.out.println(listOfPoints.get(0));
+				listOfPoints.add(1,model.getY());
+				System.out.println(listOfPoints.get(1));
+				listOfPoints.add(2,model.getWidth() + model.getX());
+				listOfPoints.add(3,model.getHeight() + model.getY());
 				
 				if (listOfPoints.get(0) <= x && listOfPoints.get(1) <= y && listOfPoints.get(2) >= x - 2 && listOfPoints.get(3) + 2  >= y ) {
-						//System.out.println("The shape is on " + listOfPoints.get(3));
+						
 						return true;
 				}
 				
