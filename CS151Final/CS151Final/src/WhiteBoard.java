@@ -1,71 +1,116 @@
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
-public class WhiteBoard extends JFrame{
+public class WhiteBoard extends JFrame {
+
+	public WhiteBoard() {
 		
-		private int x;
-		private int y;
+		super.setSize(1200,1000);
+		super.setVisible(true);
+		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//super.setLayout(null);
+		
+		super.setDefaultLookAndFeelDecorated(true);
+		super.setLayout(null);
 		
 		
-		public WhiteBoard() {
+		final Canvas c = new Canvas();
+		
+		super.add(c);
+		c.setBounds(600, 0, 1000, 1000);
+		
+		JLabel label = new JLabel("Add: ");
+		super.add(label);
+		label.setBounds(0, 0, 50, 50);
+		
+		JButton RectBut = new JButton("RECT");
+		super.add(RectBut);
+		RectBut.setBounds(30,0,100,50);
+		
+		RectBut.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				c.addRect();
+			}
 			
-				x = 1200;
-				y = 1200;
-				
-				super.setSize(x, y);
-				super.setVisible(true);
-				super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				super.setLayout(new BorderLayout());
-				
-				
-				
-				//creates the whiteboard
-				final Canvas canvas = new Canvas();
-				super.add(canvas, BorderLayout.CENTER);
-				JPanel panel = new JPanel();
-				super.add(panel,BorderLayout.WEST);
-				JButton button = new JButton("Rectangle");
-				button.setPreferredSize(new Dimension(100,50));
-				panel.add(button);
-				button.addActionListener(new ActionListener() {
-	                public void actionPerformed(ActionEvent e) {
-	                		canvas.addShape(new DRectModel());
-	                		
-	                }
-				});
-				JButton button2 = new JButton("Oval");
-				button2.setPreferredSize(new Dimension(100,50));
-				
-				panel.add(button2);
-				
-				JButton button3 = new JButton("Line");
-				button3.setPreferredSize(new Dimension(100,50));
-				panel.add(button3);
-				
-				JButton button4 = new JButton("Text");
-				button4.setPreferredSize(new Dimension(100,50));
-				panel.add(button4);
-				
-				
-				
-		}
+		});
 		
+		JButton OvalBut = new JButton("OVAL");
+		super.add(OvalBut);
+		OvalBut.setBounds(150, 0, 100,50);
 		
-		public static void main(String[] args) {
-				WhiteBoard w = new WhiteBoard();
-		}
+		OvalBut.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				c.addOval();
+			}
+			
+		});
+
+		JButton LineBut = new JButton("LINE");
+		super.add(LineBut);
+		LineBut.setBounds(270, 0, 100,50);
+		
+		LineBut.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				c.addLine();
+			}
+			
+		});
+		
+		JButton TextBut = new JButton("Text");
+		super.add(TextBut);
+		TextBut.setBounds(390, 0, 100,50);
+		
+		TextBut.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				c.addTextField();
+			}
+			
+		});
+		
+		JButton SColBut = new JButton("Set Color");
+		super.add(SColBut);
+		SColBut.setBounds(0, 70, 100, 50);
+		
+		JTextField jtf = new JTextField();
+		super.add(jtf);
+		jtf.setBounds(0,170, 150, 18);
+		
+		JButton moveToF = new JButton("Move To Front");
+		super.add(moveToF);
+		moveToF.setBounds(0, 230 , 150, 50);
+		
+		JButton moveToB = new JButton("Move To Back");
+		super.add(moveToB);
+		moveToB.setBounds(160, 230 , 150, 50);
+		
+		JButton RemoveBut = new JButton("Remove");
+		super.add(RemoveBut);
+		RemoveBut.setBounds(320, 230 , 150, 50);
+		
+		//JComboBox FontSlct = new JComboBox();
+		
+		JTable table = new JTable();
+		table.setBounds(0, 600, 600, 600);
+		 
+	}
+	public static void main(String[] args) {
+		
+		WhiteBoard wb = new WhiteBoard();
+		DShapes s = new DShapes();
+	}
+	
 }

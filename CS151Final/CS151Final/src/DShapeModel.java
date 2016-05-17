@@ -10,12 +10,12 @@ public class DShapeModel {
 		
 		public DShapeModel()
 		{
-				x = 0;
-				y = 0;
-				width = 0;
-				height = 0;
+				x = 10;
+				y = 10;
+				width = 20;
+				height = 20;
 				
-				color = Color.GRAY;
+				color = Color.RED;
 				
 		}
 		
@@ -73,8 +73,5 @@ public class DShapeModel {
 		{
 				return color;
 		}
-		
-		
-		
 		
 }
