@@ -7,7 +7,7 @@ public class DText extends DShapes{
 		{
 				super();
 				
-				this.setModel(new DTextModel());
+				this.setDShapeModel(new DTextModel());
 		}
 		
 		public void draw(Graphics g) {

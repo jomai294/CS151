@@ -7,7 +7,7 @@ public class DRect extends DShapes {
 		{
 				super();
 				
-				this.setModel(new DRectModel());
+				this.setDShapeModel(new DRectModel());
 		}
 		
 		public void draw (Graphics g) {

@@ -81,9 +81,37 @@ public class WhiteBoard extends JFrame {
 			
 		});
 		
-		JButton SColBut = new JButton("Set Color");
+		final JButton SColBut = new JButton("Set Color");
 		super.add(SColBut);
 		SColBut.setBounds(0, 70, 100, 50);
+		
+		SColBut.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Color initial = SColBut.getBackground();
+				Color background = JColorChooser.showDialog(null, "Change button background", initial);
+				
+				if (background != null) {
+						SColBut.setBackground(background);
+				}
+				
+				if (c.getShapeSelected() != null) {
+					System.out.println("Hello");
+					c.addColor(SColBut.getBackground());
+				}
+				else
+				{
+					for (DShapes d : c.Shapes) {
+						d.getDShapeModel().setColor(SColBut.getBackground());
+					}
+				}
+				
+				
+			}
+			
+		});
 		
 		JTextField jtf = new JTextField();
 		super.add(jtf);
@@ -114,6 +142,3 @@ public class WhiteBoard extends JFrame {
 	}
 	
 }
-
-
-

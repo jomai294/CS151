@@ -1,15 +1,18 @@
 import java.awt.Color;
+import java.util.ArrayList;
 
 
-public class DShapeModel {
+public class DShapeModel implements ModelListener {
 		private int x;
 		private int y;
 		private int width;
 		private int height;
 		private Color color;
+		private ArrayList<ModelListener> list;
 		
 		public DShapeModel()
 		{
+				list = new ArrayList<ModelListener>();
 				x = 10;
 				y = 10;
 				width = 20;
@@ -72,6 +75,20 @@ public class DShapeModel {
 		public Color getColor()
 		{
 				return color;
+		}
+
+		@Override
+		public void modelChanged(DShapeModel model) {
+			// TODO Auto-generated method stub
+				//model = new DShapeModel(x,y,width,height,color);
+		}
+		
+		public void addListener(ModelListener m) {
+				list.add(m);
+		}
+		
+		public void removeListener(ModelListener m) {
+				list.remove(m);
 		}
 		
 }
