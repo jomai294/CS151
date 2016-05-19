@@ -102,10 +102,8 @@ public class WhiteBoard extends JFrame {
 					c.addColor(SColBut.getBackground());
 				}
 				else
-				{
-					for (DShapes d : c.Shapes) {
-						d.getDShapeModel().setColor(SColBut.getBackground());
-					}
+				{					
+					
 				}
 				
 				

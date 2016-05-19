@@ -88,6 +88,10 @@ public class Canvas extends JPanel {
 						System.out.println("Mouse y is " + e.getY());
 						System.out.println("within shape");
 					}
+					else
+					{
+						setShapeSelected(null);
+					}
 				}
 				
 				if (selected.getKnob()[0].x - 3 < e.getX() && selected.getKnob()[0].x + 9 > e.getX() && selected.getKnob()[0].y - 3 < e.getY() && selected.getKnob()[0].y + 9 > e.getY()) {
